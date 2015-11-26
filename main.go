@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"log"
 
-	"gopkg.in/alecthomas/kingpin.v2"
 	"github.com/travisjeffery/ec2-tag-spots/tagger"
+	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
-	region = kingpin.Flag("region", "Name of AWS region to use").Default("us-east-1").String()
-	requestId = kingpin.Flag("spot-fleet-request-id", "ID of spot fleet request to get instances").Required().String()
-	tags = kingpin.Flag("tags", "Key/value tags to add to instances").Required().StringMap()
+	region    = kingpin.Flag("region", "Name of AWS region to use").Default("us-east-1").String()
+	requestID = kingpin.Flag("spot-fleet-request-id", "ID of spot fleet request to get instances").Required().String()
+	tags      = kingpin.Flag("tags", "Key/value tags to add to instances").Required().StringMap()
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 	kingpin.CommandLine.Help = "Create tags for spot fleets."
 	kingpin.Parse()
 
-	t := tagger.New(region, requestId, tags)
+	t := tagger.New(region, requestID, tags)
 	instances, err := t.GetInstances()
 	if err != nil {
 		log.Fatalf("error getting instances: %s", err.Error())
