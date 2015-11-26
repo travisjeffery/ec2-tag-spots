@@ -4,8 +4,6 @@ Create tags for AWC EC2 spot fleets.
 
 ## Install
 
-[Download the binary](https://github.com/travisjeffery/ec2-tag-spots/releases/latest), or go get:
-
 ```
 $ go get github.com/travisjeffery/ec2-tag-spots
 ```
